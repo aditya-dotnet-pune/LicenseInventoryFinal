@@ -1,0 +1,6 @@
+@LicenseInventoryAPI_HostAddress = http://localhost:5202
+
+GET {{LicenseInventoryAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
