@@ -15,14 +15,14 @@ namespace LicenseInventoryAPI.Data
         public DbSet<SoftwareInstallation> SoftwareInstallations { get; set; }
         public DbSet<ComplianceEvent> ComplianceEvents { get; set; }
         public DbSet<CostAllocation> CostAllocations { get; set; }
-        public DbSet<User> Users { get; set; }
+        // NEW: Renewals Table
+        public DbSet<Renewal> Renewals { get; set; }
+        public DbSet<Users> Users { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // Configuring Relationships (Foreign Keys)
 
             // Device -> InstalledSoftware (One-to-Many)
             modelBuilder.Entity<SoftwareInstallation>()
@@ -35,7 +35,7 @@ namespace LicenseInventoryAPI.Data
                 .HasOne(s => s.License)
                 .WithMany(l => l.Installations)
                 .HasForeignKey(s => s.LicenseId)
-                .IsRequired(false); // Installation bina license ke bhi ho sakti hai
+                .IsRequired(false);
 
             // License -> ComplianceEvents (One-to-Many)
             modelBuilder.Entity<ComplianceEvent>()

@@ -3,7 +3,7 @@
 namespace LicenseInventoryAPI.Models
 {
     // Simple User model for RBAC
-    public class User
+    public class UserModel
     {
         [Key]
         public Guid UserId { get; set; }
